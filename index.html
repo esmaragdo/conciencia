@@ -19,8 +19,7 @@
                             700: '#1b261d',
                             matrix: '#00ff66',
                             amber: '#fbbd05',
-                            cyan: '#00f2fe',
-                            border: 'rgba(0, 255, 102, 0.25)'
+                            cyan: '#00f2fe'
                         }
                     },
                     fontFamily: {
@@ -38,7 +37,6 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
         }
-        /* Tactical CRT scanline overlay */
         .crt-overlay {
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
             background-size: 100% 3px, 6px 100%;
@@ -61,17 +59,20 @@
         .matrix-glow {
             text-shadow: 0 0 12px rgba(0, 255, 102, 0.6);
         }
-        .amber-glow {
-            text-shadow: 0 0 12px rgba(251, 189, 5, 0.6);
+        @keyframes heartbeatPulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(0,255,102,0.3)); opacity: 0.85; }
+            50% { transform: scale(1.03); filter: drop-shadow(0 0 35px rgba(0,255,102,0.7)); opacity: 1; }
+            100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(0,255,102,0.3)); opacity: 0.85; }
+        }
+        .brain-heartbeat {
+            animation: heartbeatPulse 4s infinite ease-in-out;
         }
     </style>
 </head>
 <body class="term-grid min-h-screen relative selection:bg-term-matrix selection:text-black">
 
-    <!-- CRT Scanline layer -->
     <div class="fixed inset-0 crt-overlay z-50"></div>
 
-    <!-- Top Navigation HUD -->
     <header class="fixed top-0 left-0 right-0 z-40 bg-term-950/95 backdrop-blur-md border-b border-term-matrix/30 font-mono text-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
@@ -83,13 +84,13 @@
                     <span class="text-[9px] text-slate-400">SECURE INTEL FEED v10.4 // CLASSIFIED</span>
                 </div>
             </div>
-            <div class="hidden xl:flex items-center space-x-5 text-slate-300">
+            <div class="hidden xl:flex items-center space-x-4 text-slate-300">
                 <a href="#fase1" class="hover:text-term-matrix transition">[01. Conciencia]</a>
-                <a href="#fase2" class="hover:text-term-matrix transition">[02. Archivos CIA]</a>
+                <a href="#fase2" class="hover:text-term-matrix transition">[02. CIA]</a>
                 <a href="#fase3" class="hover:text-term-matrix transition">[03. Autor]</a>
                 <a href="#fase4" class="hover:text-term-matrix transition">[04. Videolog]</a>
                 <a href="#fase5" class="hover:text-term-matrix transition">[05. Protocolos]</a>
-                <a href="#fase6" class="hover:text-term-matrix transition">[06. Suministro]</a>
+                <a href="#fase6" class="hover:text-term-matrix transition">[06. Oferta]</a>
                 <a href="#fase7" class="text-term-amber hover:underline font-bold">[07. El Tesoro PDF]</a>
             </div>
             <div>
@@ -101,21 +102,28 @@
         </div>
     </header>
 
-    <!-- FASE 01: EL PODER DE LA CONCIENCIA & SINTONIZADOR -->
-    <section id="fase1" class="relative pt-36 pb-24 overflow-hidden">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 text-center">
+    <section id="fase1" class="relative pt-32 pb-24 overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8 text-center">
             
             <div class="inline-flex items-center space-x-2 bg-term-900 border border-term-matrix/40 px-4 py-1.5 rounded text-xs text-term-matrix font-mono shadow-md">
                 <i class="fa-solid fa-bolt text-term-amber"></i>
                 <span>FASE 01 // EL PODER SUPREMO DE LA CONCIENCIA HUMANA</span>
             </div>
 
+            <!-- Full Width Transparent Brain with Heartbeat Pulse -->
+            <div class="w-full flex justify-center py-4 my-2 overflow-hidden">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9MFq0hHg2BHcWWCyOd936-62Hcp6DDhc4wHLmvO991JhaOdObE_GwKib_uayfTW-GNyZYwDQRyuzXW4Kmo7Vv1fnuAUfiK7lCm6F00oIIaG9aQfIgv8GKwBKz5lsZxvNAEPF0dr6hIobPPTBNrYfUKZyci2cbl0gMyDewLL5hpyFRSO_2YleUDO5qEPCw/s1600/CEREBRO_TRANS.png" 
+                     alt="Cerebro Neural Esmaragdocamaz" 
+                     class="w-full max-w-2xl h-auto object-contain brain-heartbeat"
+                     onerror="this.src='https://placehold.co/800x450/030303/00ff66?text=Cerebro+Neural+Activo'">
+            </div>
+
             <h1 class="font-mono text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto text-white">
-                Desbloquea el <span class="text-term-matrix matrix-glow">Potencial Infinito</span> de Tu Mente
+                Toma el Control de <span class="text-term-matrix matrix-glow">Tu Conciencia</span>
             </h1>
 
             <p class="text-slate-300 text-base sm:text-lg font-light leading-relaxed max-w-3xl mx-auto font-sans">
-                La mayoría de los seres humanos solo utiliza una fracción minúscula de su capacidad cerebral. ¿Qué pasaría si pudieras expandir tu frecuencia mental, conectar con campos no locales y alterar tu realidad mediante ingeniería mental exacta?
+                La mayoría de los seres humanos solo utiliza una fracción minúscula de su capacidad cerebral. Al elevar tus ondas cerebrales y conectar con campos no locales, alteras tu realidad mediante ingeniería mental exacta.
             </p>
 
             <!-- INTERACTIVE FREQUENCY TUNER HUD -->
@@ -131,7 +139,7 @@
 
                 <div class="space-y-3 font-mono">
                     <div class="flex justify-between text-xs">
-                        <span class="text-slate-400">Desliza para calibrar onda cerebral:</span>
+                        <span class="text-slate-400">Desliza para calibrar frecuencia mental:</span>
                         <span id="tele-val" class="text-term-matrix text-base font-bold">7.82 Hz</span>
                     </div>
                     <input type="range" id="tele-slider" min="4" max="25" value="7.82" step="0.5" class="w-full accent-term-matrix cursor-pointer bg-term-950 h-2.5 rounded-lg" oninput="updateTelemetry(this.value)">
@@ -146,7 +154,6 @@
         </div>
     </section>
 
-    <!-- FASE 02: ARCHIVOS DESCLASIFICADOS DE LA CIA & MATRIX -->
     <section id="fase2" class="py-24 bg-term-900/40 border-y border-term-matrix/25 relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             
@@ -160,7 +167,6 @@
 
             <!-- Dossier Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-mono">
-                <!-- Dossier 1 -->
                 <div onclick="toggleDossier(1)" class="term-border bg-term-900/80 hover:border-term-matrix p-6 rounded-xl cursor-pointer transition group relative">
                     <div class="flex items-center justify-between mb-3">
                         <span class="text-xs text-term-matrix bg-term-950 px-2.5 py-1 rounded border border-term-matrix/40">DOSSIER // 01</span>
@@ -173,7 +179,6 @@
                     </div>
                 </div>
 
-                <!-- Dossier 2 -->
                 <div onclick="toggleDossier(2)" class="term-border bg-term-900/80 hover:border-term-matrix p-6 rounded-xl cursor-pointer transition group relative">
                     <div class="flex items-center justify-between mb-3">
                         <span class="text-xs text-term-matrix bg-term-950 px-2.5 py-1 rounded border border-term-matrix/40">DOSSIER // 02</span>
@@ -186,7 +191,6 @@
                     </div>
                 </div>
 
-                <!-- Dossier 3 -->
                 <div onclick="toggleDossier(3)" class="term-border bg-term-900/80 hover:border-term-matrix p-6 rounded-xl cursor-pointer transition group relative">
                     <div class="flex items-center justify-between mb-3">
                         <span class="text-xs text-term-matrix bg-term-950 px-2.5 py-1 rounded border border-term-matrix/40">DOSSIER // 03</span>
@@ -199,7 +203,6 @@
                     </div>
                 </div>
 
-                <!-- Dossier 4 -->
                 <div onclick="toggleDossier(4)" class="term-border bg-term-900/80 hover:border-term-matrix p-6 rounded-xl cursor-pointer transition group relative">
                     <div class="flex items-center justify-between mb-3">
                         <span class="text-xs text-term-matrix bg-term-950 px-2.5 py-1 rounded border border-term-matrix/40">DOSSIER // 04</span>
@@ -216,7 +219,6 @@
         </div>
     </section>
 
-    <!-- FASE 03: EL AUTOR (ESMARAGDO CAMAZ) -->
     <section id="fase3" class="py-24 relative">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="term-border bg-term-900/90 rounded-2xl p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-2xl">
@@ -250,7 +252,6 @@
         </div>
     </section>
 
-    <!-- FASE 04: BITÁCORA DE VIDEO OFICIAL -->
     <section id="fase4" class="py-24 bg-term-900/50 border-y border-term-matrix/25 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 text-center">
             
@@ -275,7 +276,6 @@
         </div>
     </section>
 
-    <!-- FASE 05: BENEFICIOS Y PROTOCOLOS -->
     <section id="fase5" class="py-24 relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             
@@ -322,7 +322,6 @@
         </div>
     </section>
 
-    <!-- FASE 06: OFERTA Y SUMINISTRO -->
     <section id="fase6" class="py-24 bg-term-900/60 border-y border-term-matrix/25 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
             
@@ -369,7 +368,6 @@
         </div>
     </section>
 
-    <!-- FASE 07: EL TESORO // EL CHECKOUT FINAL -->
     <section id="fase7" class="py-28 relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
             
@@ -428,9 +426,7 @@
         </div>
     </footer>
 
-    <!-- Interactive JS Scripts -->
     <script>
-        // Interactive Telemetry Frequency Tuner
         function updateTelemetry(val) {
             document.getElementById('tele-val').innerText = val + ' Hz';
             const status = document.getElementById('tele-status');
@@ -448,7 +444,6 @@
             }
         }
 
-        // Dossier Toggles
         function toggleDossier(num) {
             for(let i=1; i<=4; i++) {
                 const content = document.getElementById('dossier-content-' + i);
@@ -468,7 +463,6 @@
             }
         }
 
-        // Module Inspector
         function selectModule(num) {
             for(let i=1; i<=3; i++) {
                 const card = document.getElementById('mod-card-' + i);
