@@ -111,11 +111,11 @@
             </div>
 
             <!-- Full Width Transparent Brain with Heartbeat Pulse -->
-            <div class="w-full flex justify-center py-4 my-2 overflow-hidden">
+            <div class="w-full flex justify-center py-6 my-2 overflow-hidden">
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9MFq0hHg2BHcWWCyOd936-62Hcp6DDhc4wHLmvO991JhaOdObE_GwKib_uayfTW-GNyZYwDQRyuzXW4Kmo7Vv1fnuAUfiK7lCm6F00oIIaG9aQfIgv8GKwBKz5lsZxvNAEPF0dr6hIobPPTBNrYfUKZyci2cbl0gMyDewLL5hpyFRSO_2YleUDO5qEPCw/s1600/CEREBRO_TRANS.png" 
                      alt="Cerebro Neural Esmaragdocamaz" 
                      class="w-full max-w-2xl h-auto object-contain brain-heartbeat"
-                     onerror="this.src='https://placehold.co/800x450/030303/00ff66?text=Cerebro+Neural+Activo'">
+                     onerror="this.onerror=null; this.src='https://placehold.co/800x450/030303/00ff66?text=Cerebro+Neural+Activo';">
             </div>
 
             <h1 class="font-mono text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto text-white">
@@ -267,7 +267,6 @@
                     <span class="text-term-matrix animate-pulse">● TRANSMISIÓN ACTIVA</span>
                 </div>
                 
-                <!-- Responsive YouTube Vertical Embed Wrapper -->
                 <div class="relative w-full overflow-hidden rounded-lg border border-term-matrix/40 bg-black shadow-2xl aspect-[9/16] max-h-[580px] mx-auto">
                     <iframe class="w-full h-full absolute inset-0" src="https://www.youtube-nocookie.com/embed/tuUY-1XbdkE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
@@ -385,19 +384,23 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-4">
-                    <div class="space-y-4 text-left font-sans">
-                        <div class="w-16 h-16 rounded bg-term-950 border border-term-matrix flex items-center justify-center mx-auto md:mx-0 shadow-lg shadow-term-matrix/20">
-                            <i class="fa-solid fa-file-pdf text-term-matrix text-2xl"></i>
+                    <div class="space-y-4 text-center md:text-left font-sans flex flex-col items-center md:items-start">
+                        <!-- Official PDF Cover Image with Fallback -->
+                        <div class="w-40 sm:w-48 rounded-lg overflow-hidden border-2 border-term-matrix shadow-2xl shadow-term-matrix/30 bg-term-950">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_s4cKDqk0RLGLi-egHhlCgi9SAZrIMmHqjlDdaHCEQOb4XGM_wHvF1mATeZuwYe21Yj952G6tzbTP4pvaPLDywUEXL2VYGAj2VsX1FdhRmbt5kUSdmhQWQAUvNSPoqgKwE4RzfMtimopJX7weUYkahqTV5uMvK0-xzL0tJEM4CT2W1pYT9uFK0S2H-lMH/s1600/PORTADA.png" 
+                                 alt="Portada White Paper Cómo Elevar La Conciencia" 
+                                 class="w-full h-auto object-cover"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/400x560/030303/00ff66?text=PORTADA+PDF';">
                         </div>
-                        <h3 class="font-mono font-bold text-xl text-white text-center md:text-left">White Paper Oficial</h3>
-                        <ul class="text-xs text-slate-300 space-y-2 font-mono">
+                        <h3 class="font-mono font-bold text-lg text-white">White Paper Oficial</h3>
+                        <ul class="text-xs text-slate-300 space-y-1.5 font-mono text-left">
                             <li><i class="fa-solid fa-check text-term-matrix mr-2"></i> PDF Alta Resolución (918 KB)</li>
                             <li><i class="fa-solid fa-check text-term-matrix mr-2"></i> Compatible Smartphone / Tablet / PC</li>
                             <li><i class="fa-solid fa-check text-term-matrix mr-2"></i> Enlace automático inmediato tras el pago</li>
                         </ul>
                     </div>
 
-                    <div class="term-border bg-term-950 p-6 rounded-xl text-center space-y-6 font-mono shadow-xl">
+                    <div class="term-border bg-term-950 p-6 rounded-xl text-center space-y-6 font-mono shadow-xl flex flex-col justify-center">
                         <div>
                             <span class="text-xs text-slate-400 block">Inversión Única</span>
                             <span class="text-3xl font-bold text-term-matrix">$7.99 <span class="text-xs text-slate-400 font-sans">USD</span></span>
@@ -418,7 +421,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-term-950 border-t border-term-matrix/30 py-10 text-center text-xs text-slate-500 font-mono space-y-3">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
             <span class="text-term-matrix font-bold tracking-widest block">TERMINAL ESMARAGDOCAMAZ // SCHEMATIC ARCHIVE</span>
