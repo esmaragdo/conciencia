@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cómo Elevar La Conciencia | Método Desclasificado de la CIA</title>
+    <title>Cómo Elevar La Conciencia | Expediente Clasificado CIA</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        mystic: {
-                            950: '#040609',
-                            900: '#07090e',
-                            800: '#0d111a',
-                            700: '#161d2e',
-                            600: '#222d4a',
-                            gold: '#d4af37',
-                            'gold-light': '#f3e5ab',
-                            cyan: '#00f2fe'
+                        term: {
+                            950: '#030303',
+                            900: '#080c09',
+                            800: '#111812',
+                            700: '#1b261d',
+                            matrix: '#00ff66',
+                            amber: '#fbbd05',
+                            cyan: '#00f2fe',
+                            border: 'rgba(0, 255, 102, 0.25)'
                         }
                     },
                     fontFamily: {
-                        cinzel: ['Cinzel', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                         sans: ['Plus Jakarta Sans', 'sans-serif']
                     }
                 }
@@ -33,215 +33,216 @@
     </script>
     <style>
         body {
-            background-color: #040609;
-            color: #e2e8f0;
+            background-color: #030303;
+            color: #d1d5db;
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
         }
-        .glow-gold {
-            text-shadow: 0 0 25px rgba(212, 175, 55, 0.45);
+        /* Tactical CRT scanline overlay */
+        .crt-overlay {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 6px 100%;
+            pointer-events: none;
         }
-        .box-glow {
-            box-shadow: 0 0 35px rgba(212, 175, 55, 0.15);
-        }
-        .classified-stamp {
-            border: 2px dashed rgba(212, 175, 55, 0.4);
-            transform: rotate(-3deg);
-        }
-        .bg-grid {
-            background-size: 40px 40px;
+        .term-grid {
+            background-size: 30px 30px;
             background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+                linear-gradient(to right, rgba(0, 255, 102, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 255, 102, 0.03) 1px, transparent 1px);
         }
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.08); }
+        .term-border {
+            border: 1px solid rgba(0, 255, 102, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.04);
         }
-        .animate-glow {
-            animation: pulseGlow 7s infinite ease-in-out;
+        .term-border-glow {
+            border: 1px solid rgba(0, 255, 102, 0.7);
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.15);
         }
-        .vertical-video-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 340px;
-            margin: 0 auto;
-            aspect-ratio: 9/16;
-            background: #000;
+        .matrix-glow {
+            text-shadow: 0 0 12px rgba(0, 255, 102, 0.6);
         }
-        .radar-sweep {
-            background: conic-gradient(from 0deg at 50% 50%, rgba(212, 175, 55, 0) 0deg, rgba(212, 175, 55, 0.15) 360deg);
-            animation: radarSpin 6s linear infinite;
-        }
-        @keyframes radarSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .amber-glow {
+            text-shadow: 0 0 12px rgba(251, 189, 5, 0.6);
         }
     </style>
 </head>
-<body class="bg-mystic-950 bg-grid min-h-screen relative selection:bg-mystic-gold selection:text-black">
+<body class="term-grid min-h-screen relative selection:bg-term-matrix selection:text-black">
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-mystic-950/90 backdrop-blur-md border-b border-mystic-gold/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- CRT Scanline layer -->
+    <div class="fixed inset-0 crt-overlay z-50"></div>
+
+    <!-- Top Navigation HUD -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-term-950/95 backdrop-blur-md border-b border-term-matrix/30 font-mono text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-full border border-mystic-gold/50 flex items-center justify-center bg-mystic-800">
-                    <i class="fa-solid fa-eye text-mystic-gold animate-pulse"></i>
+                <div class="w-8 h-8 rounded border border-term-matrix flex items-center justify-center bg-term-900 shadow-lg shadow-term-matrix/20">
+                    <i class="fa-solid fa-terminal text-term-matrix animate-pulse"></i>
                 </div>
                 <div>
-                    <span class="font-cinzel font-bold tracking-widest text-mystic-gold text-sm sm:text-base block">ESMARAGDOCAMAZ</span>
-                    <span class="text-[10px] tracking-widest text-slate-400 uppercase">Expediente Clasificado Interactivo</span>
+                    <span class="font-extrabold tracking-widest text-term-matrix block">TERMINAL // ESMARAGDOCAMAZ</span>
+                    <span class="text-[9px] text-slate-400">SECURE INTEL FEED v10.4 // CLASSIFIED</span>
                 </div>
             </div>
-            <div class="hidden md:flex items-center space-x-6 text-sm text-slate-300 font-medium">
-                <a href="#conciencia" class="hover:text-mystic-gold transition">1. Conciencia</a>
-                <a href="#documentos" class="hover:text-mystic-gold transition">2. CIA</a>
-                <a href="#autor" class="hover:text-mystic-gold transition">3. Autor</a>
-                <a href="#videos" class="hover:text-mystic-gold transition">4. Videos</a>
-                <a href="#beneficios" class="hover:text-mystic-gold transition">5. Guía</a>
-                <a href="#oferta" class="hover:text-mystic-gold transition">6. Oferta</a>
-                <a href="#tesoro" class="hover:text-mystic-gold transition">7. El Tesoro</a>
+            <div class="hidden xl:flex items-center space-x-5 text-slate-300">
+                <a href="#fase1" class="hover:text-term-matrix transition">[01. Conciencia]</a>
+                <a href="#fase2" class="hover:text-term-matrix transition">[02. Archivos CIA]</a>
+                <a href="#fase3" class="hover:text-term-matrix transition">[03. Autor]</a>
+                <a href="#fase4" class="hover:text-term-matrix transition">[04. Videolog]</a>
+                <a href="#fase5" class="hover:text-term-matrix transition">[05. Protocolos]</a>
+                <a href="#fase6" class="hover:text-term-matrix transition">[06. Suministro]</a>
+                <a href="#fase7" class="text-term-amber hover:underline font-bold">[07. El Tesoro PDF]</a>
             </div>
             <div>
-                <a href="#tesoro" class="bg-gradient-to-r from-mystic-gold to-yellow-600 text-black font-bold px-5 py-2.5 rounded-lg text-sm font-cinzel hover:brightness-110 shadow-lg shadow-mystic-gold/25 transition">
-                    Obtener PDF ($7.99)
+                <a href="#fase7" class="bg-term-matrix text-black font-extrabold px-4 py-2 rounded text-xs hover:bg-emerald-400 transition shadow-lg shadow-term-matrix/30 flex items-center space-x-1.5">
+                    <i class="fa-solid fa-lock-open"></i>
+                    <span>DESCARGAR ($7.99)</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <section id="conciencia" class="relative pt-36 pb-24 overflow-hidden">
-        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-mystic-gold/10 rounded-full blur-3xl pointer-events-none animate-glow"></div>
-        
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
-            <div class="inline-flex items-center space-x-2 bg-mystic-800/90 border border-mystic-gold/30 px-4 py-2 rounded-full text-xs text-mystic-gold font-mono">
-                <i class="fa-solid fa-atom animate-spin"></i>
-                <span>PASO 1: EL PODER OCULTO DE LA CONCIENCIA HUMANA</span>
+    <!-- FASE 01: EL PODER DE LA CONCIENCIA & SINTONIZADOR -->
+    <section id="fase1" class="relative pt-36 pb-24 overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 text-center">
+            
+            <div class="inline-flex items-center space-x-2 bg-term-900 border border-term-matrix/40 px-4 py-1.5 rounded text-xs text-term-matrix font-mono shadow-md">
+                <i class="fa-solid fa-bolt text-term-amber"></i>
+                <span>FASE 01 // EL PODER SUPREMO DE LA CONCIENCIA HUMANA</span>
             </div>
 
-            <h1 class="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight max-w-4xl mx-auto">
-                Desbloquea el <span class="text-mystic-gold glow-gold">Potencial Infinito</span> de Tu Mente
+            <h1 class="font-mono text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto text-white">
+                Desbloquea el <span class="text-term-matrix matrix-glow">Potencial Infinito</span> de Tu Mente
             </h1>
 
-            <p class="text-slate-300 text-base sm:text-xl font-light leading-relaxed max-w-3xl mx-auto">
-                La mayoría de los seres humanos solo utiliza una fracción minúscula de su capacidad cerebral. ¿Qué pasaría si pudieras expandir tu frecuencia mental, conectar con campos no locales y alterar tu realidad?
+            <p class="text-slate-300 text-base sm:text-lg font-light leading-relaxed max-w-3xl mx-auto font-sans">
+                La mayoría de los seres humanos solo utiliza una fracción minúscula de su capacidad cerebral. ¿Qué pasaría si pudieras expandir tu frecuencia mental, conectar con campos no locales y alterar tu realidad mediante ingeniería mental exacta?
             </p>
 
-            <!-- INTERACTIVE FREQUENCY TUNER WIDGET -->
-            <div class="bg-mystic-800/80 border-2 border-mystic-gold/40 rounded-3xl p-6 sm:p-10 max-w-3xl mx-auto box-glow space-y-6">
-                <div class="flex justify-between items-center text-xs font-mono text-mystic-gold border-b border-slate-800 pb-3">
-                    <span>MÓDULO INTERACTIVO // FRECUENCIA NEURONAL</span>
-                    <span id="freq-status" class="bg-mystic-gold/20 px-2.5 py-1 rounded text-yellow-200">Estado: Normal (Beta)</span>
+            <!-- INTERACTIVE FREQUENCY TUNER HUD -->
+            <div class="term-border bg-term-900/90 rounded-2xl p-6 sm:p-8 max-w-3xl mx-auto text-left space-y-6 relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 bg-term-matrix/10 border-b border-l border-term-matrix/30 px-3 py-1 font-mono text-[10px] text-term-matrix">
+                    HUD // FRECUENCIA SCHUMANN & BRAINWAVES
                 </div>
 
-                <div class="space-y-3">
-                    <div class="flex justify-between text-sm font-semibold">
-                        <span class="text-slate-400">Desliza para elevar frecuencia:</span>
-                        <span id="freq-val" class="text-mystic-gold font-mono text-lg font-bold">7.82 Hz (Schumann)</span>
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center font-mono text-xs text-term-matrix border-b border-slate-800 pb-3 gap-2">
+                    <span>SINTONIZADOR NEURONAL INTERACTIVO</span>
+                    <span id="tele-status" class="bg-term-matrix/20 px-2.5 py-1 rounded text-emerald-300">Frecuencia Base: 7.82 Hz (Schumann)</span>
+                </div>
+
+                <div class="space-y-3 font-mono">
+                    <div class="flex justify-between text-xs">
+                        <span class="text-slate-400">Desliza para calibrar onda cerebral:</span>
+                        <span id="tele-val" class="text-term-matrix text-base font-bold">7.82 Hz</span>
                     </div>
-                    <input type="range" id="freq-slider" min="4" min="40" value="7.82" step="0.5" class="w-full accent-mystic-gold cursor-pointer bg-mystic-900 h-3 rounded-lg" oninput="updateFrequency(this.value)">
+                    <input type="range" id="tele-slider" min="4" max="25" value="7.82" step="0.5" class="w-full accent-term-matrix cursor-pointer bg-term-950 h-2.5 rounded-lg" oninput="updateTelemetry(this.value)">
                 </div>
 
-                <div id="freq-desc" class="bg-mystic-900/90 border border-slate-800 p-5 rounded-2xl text-left text-sm text-slate-300 transition-all duration-300">
-                    <strong class="text-mystic-gold block mb-1 font-cinzel">Frecuencia de Resonancia Schumann (7.82 Hz)</strong>
-                    El punto de sintonía exacta entre el campo electromagnético de la Tierra y las ondas cerebrales Alpha profundas. Ideal para activar la intuición y la calma mental.
+                <div id="tele-desc" class="bg-term-950/90 border border-term-matrix/30 p-4 rounded-xl text-xs text-slate-300 font-sans leading-relaxed">
+                    <strong class="text-term-matrix block mb-1 font-mono">Resonancia Schumann (7.82 Hz)</strong>
+                    Punto de sintonía entre el campo electromagnético terrestre y las ondas cerebrales Alpha profundas. Activa la intuición, calma el ruido mental y abre canales de percepción no local.
                 </div>
             </div>
+
         </div>
     </section>
 
-    <section id="documentos" class="py-24 bg-mystic-900/60 border-y border-mystic-gold/15 relative">
+    <!-- FASE 02: ARCHIVOS DESCLASIFICADOS DE LA CIA & MATRIX -->
+    <section id="fase2" class="py-24 bg-term-900/40 border-y border-term-matrix/25 relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            
             <div class="text-center space-y-3">
-                <span class="text-xs tracking-widest text-mystic-gold uppercase font-mono">PASO 2: FUENTES OFICIALES DESCLASIFICADAS</span>
-                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold">El Expediente Secreto de la CIA (Proyecto Gateway)</h2>
-                <p class="text-slate-300 max-w-2xl mx-auto text-sm">
-                    Haz clic en cada secreto desclasificado para descifrar el manual científico que inspiró <em>The Matrix</em>.
+                <span class="text-xs tracking-widest text-term-matrix uppercase font-mono">FASE 02 // ARCHIVOS DESCLASIFICADOS DE LA CIA</span>
+                <h2 class="font-mono text-2xl sm:text-4xl font-bold text-white">Analysis and Assessment of Gateway Process</h2>
+                <p class="text-slate-300 max-w-2xl mx-auto text-sm font-sans">
+                    Haz clic en cada sección del expediente secreto para inspeccionar los hallazgos que inspiraron la física de <em>The Matrix</em>.
                 </p>
             </div>
 
-            <!-- Interactive Dossier Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Card 1 -->
-                <div onclick="toggleDossier(1)" class="bg-mystic-800/70 border border-slate-800 hover:border-mystic-gold/50 p-6 rounded-2xl cursor-pointer transition-all duration-300 group">
+            <!-- Dossier Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-mono">
+                <!-- Dossier 1 -->
+                <div onclick="toggleDossier(1)" class="term-border bg-term-900/80 hover:border-term-matrix p-6 rounded-xl cursor-pointer transition group relative">
                     <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-mono text-mystic-gold bg-mystic-900 px-3 py-1 rounded-full border border-mystic-gold/30">DOSSIER #01</span>
-                        <i class="fa-solid fa-chevron-down text-mystic-gold transition-transform duration-300 group-hover:translate-y-1" id="icon-1"></i>
+                        <span class="text-xs text-term-matrix bg-term-950 px-2.5 py-1 rounded border border-term-matrix/40">DOSSIER // 01</span>
+                        <i class="fa-solid fa-chevron-down text-term-matrix transition-transform group-hover:translate-y-1" id="dossier-icon-1"></i>
                     </div>
-                    <h3 class="font-cinzel font-bold text-white text-lg mb-2">El Universo como Holograma (La Simulación)</h3>
-                    <p class="text-slate-400 text-xs sm:text-sm">La materia sólida no existe. Todo es una proyección holográfica de energía interpretada por los sentidos.</p>
-                    <div id="dos-content-1" class="hidden mt-4 pt-4 border-t border-slate-800 text-xs text-slate-300 space-y-2 leading-relaxed animate-fadeIn">
-                        <p>El documento de la CIA explica que nuestra realidad física es una ilusión codificada. Al comprender esto, dejas de ser esclavo de tu entorno físico y puedes empezar a moldear tu experiencia desde la conciencia pura.</p>
+                    <h3 class="font-bold text-white text-base mb-2 font-sans">1. El Universo como Holograma (La Simulación)</h3>
+                    <p class="text-slate-400 text-xs font-sans leading-relaxed">La materia sólida no existe. Todo es una proyección holográfica de energía interpretada por los sentidos.</p>
+                    <div id="dossier-content-1" class="hidden mt-4 pt-4 border-t border-term-matrix/30 text-xs text-slate-300 font-sans space-y-2">
+                        <p>El reporte oficial de la CIA demuestra que la realidad física es código eléctrico decodificado por el cerebro. Al comprender esto, el operador deja de ser esclavo del entorno material.</p>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div onclick="toggleDossier(2)" class="bg-mystic-800/70 border border-slate-800 hover:border-mystic-gold/50 p-6 rounded-2xl cursor-pointer transition-all duration-300 group">
+                <!-- Dossier 2 -->
+                <div onclick="toggleDossier(2)" class="term-border bg-term-900/80 hover:border-term-matrix p-6 rounded-xl cursor-pointer transition group relative">
                     <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-mono text-mystic-gold bg-mystic-900 px-3 py-1 rounded-full border border-mystic-gold/30">DOSSIER #02</span>
-                        <i class="fa-solid fa-chevron-down text-mystic-gold transition-transform duration-300 group-hover:translate-y-1" id="icon-2"></i>
+                        <span class="text-xs text-term-matrix bg-term-950 px-2.5 py-1 rounded border border-term-matrix/40">DOSSIER // 02</span>
+                        <i class="fa-solid fa-chevron-down text-term-matrix transition-transform group-hover:translate-y-1" id="dossier-icon-2"></i>
                     </div>
-                    <h3 class="font-cinzel font-bold text-white text-lg mb-2">Salir del "Cuerpo" (El Enchufe)</h3>
-                    <p class="text-slate-400 text-xs sm:text-sm">Técnica "Hemi-Sync" para sincronizar hemisferios y desconectar la conciencia de la frecuencia terrestre.</p>
-                    <div id="dos-content-2" class="hidden mt-4 pt-4 border-t border-slate-800 text-xs text-slate-300 space-y-2 leading-relaxed animate-fadeIn">
-                        <p>Literalmente el equivalente a "desenchufarse" de la Matrix. Permite experimentar la conciencia sin las limitaciones del cuerpo físico.</p>
+                    <h3 class="font-bold text-white text-base mb-2 font-sans">2. Salir del "Cuerpo" (El Enchufe)</h3>
+                    <p class="text-slate-400 text-xs font-sans leading-relaxed">Técnica "Hemi-Sync" para sincronizar hemisferios y desconectar la conciencia de la frecuencia terrestre.</p>
+                    <div id="dossier-content-2" class="hidden mt-4 pt-4 border-t border-term-matrix/30 text-xs text-slate-300 font-sans space-y-2">
+                        <p>El equivalente técnico a "desenchufarse" de la Matrix para experimentar percepción directa sin intermediarios biológicos.</p>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div onclick="toggleDossier(3)" class="bg-mystic-800/70 border border-slate-800 hover:border-mystic-gold/50 p-6 rounded-2xl cursor-pointer transition-all duration-300 group">
+                <!-- Dossier 3 -->
+                <div onclick="toggleDossier(3)" class="term-border bg-term-900/80 hover:border-term-matrix p-6 rounded-xl cursor-pointer transition group relative">
                     <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-mono text-mystic-gold bg-mystic-900 px-3 py-1 rounded-full border border-mystic-gold/30">DOSSIER #03</span>
-                        <i class="fa-solid fa-chevron-down text-mystic-gold transition-transform duration-300 group-hover:translate-y-1" id="icon-3"></i>
+                        <span class="text-xs text-term-matrix bg-term-950 px-2.5 py-1 rounded border border-term-matrix/40">DOSSIER // 03</span>
+                        <i class="fa-solid fa-chevron-down text-term-matrix transition-transform group-hover:translate-y-1" id="dossier-icon-3"></i>
                     </div>
-                    <h3 class="font-cinzel font-bold text-white text-lg mb-2">No Existe la Cuchara (Doblado de Realidad)</h3>
-                    <p class="text-slate-400 text-xs sm:text-sm">Si tu mente vibra al unísono con el universo, puedes introducir cambios directos en la materia.</p>
-                    <div id="dos-content-3" class="hidden mt-4 pt-4 border-t border-slate-800 text-xs text-slate-300 space-y-2 leading-relaxed animate-fadeIn">
+                    <h3 class="font-bold text-white text-base mb-2 font-sans">3. No existe la cuchara (Doblado de Realidad)</h3>
+                    <p class="text-slate-400 text-xs font-sans leading-relaxed">Si tu mente vibra al unísono con el universo, puedes introducir cambios directos en la materia.</p>
+                    <div id="dossier-content-3" class="hidden mt-4 pt-4 border-t border-term-matrix/30 text-xs text-slate-300 font-sans space-y-2">
                         <p>La base científica de la manifestación avanzada: reprogramar el código fuente de la realidad mediante la intención enfocada.</p>
                     </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div onclick="toggleDossier(4)" class="bg-mystic-800/70 border border-slate-800 hover:border-mystic-gold/50 p-6 rounded-2xl cursor-pointer transition-all duration-300 group">
+                <!-- Dossier 4 -->
+                <div onclick="toggleDossier(4)" class="term-border bg-term-900/80 hover:border-term-matrix p-6 rounded-xl cursor-pointer transition group relative">
                     <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-mono text-mystic-gold bg-mystic-900 px-3 py-1 rounded-full border border-mystic-gold/30">DOSSIER #04</span>
-                        <i class="fa-solid fa-chevron-down text-mystic-gold transition-transform duration-300 group-hover:translate-y-1" id="icon-4"></i>
+                        <span class="text-xs text-term-matrix bg-term-950 px-2.5 py-1 rounded border border-term-matrix/40">DOSSIER // 04</span>
+                        <i class="fa-solid fa-chevron-down text-term-matrix transition-transform group-hover:translate-y-1" id="dossier-icon-4"></i>
                     </div>
-                    <h3 class="font-cinzel font-bold text-white text-lg mb-2">El "Absoluto" vs. El Código Fuente</h3>
-                    <p class="text-slate-400 text-xs sm:text-sm">Acceso a la fuente primordial de energía donde pasado, presente y futuro coexisten simultáneamente.</p>
-                    <div id="dos-content-4" class="hidden mt-4 pt-4 border-t border-slate-800 text-xs text-slate-300 space-y-2 leading-relaxed animate-fadeIn">
+                    <h3 class="font-bold text-white text-base mb-2 font-sans">4. El "Absoluto" vs. El Código Fuente</h3>
+                    <p class="text-slate-400 text-xs font-sans leading-relaxed">Acceso a la fuente primordial de energía donde pasado, presente y futuro coexisten simultáneamente.</p>
+                    <div id="dossier-content-4" class="hidden mt-4 pt-4 border-t border-term-matrix/30 text-xs text-slate-300 font-sans space-y-2">
                         <p>El punto Omega donde la conciencia individual se funde con la inteligencia universal del cosmos.</p>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <section id="autor" class="py-24 relative">
+    <!-- FASE 03: EL AUTOR (ESMARAGDO CAMAZ) -->
+    <section id="fase3" class="py-24 relative">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-mystic-800/80 border-2 border-mystic-gold/40 rounded-3xl p-8 sm:p-12 box-glow grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div class="term-border bg-term-900/90 rounded-2xl p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-2xl">
                 <div class="lg:col-span-4 flex justify-center">
-                    <div class="relative w-52 h-52 sm:w-64 sm:h-64 rounded-2xl overflow-hidden border-2 border-mystic-gold/75 shadow-2xl">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8FbLbKwFrXtjEejDKAODVrx-K5KYWOY4ItIZ_jA8he1rqxrzZ7LBjQ-JitZkoDs2bECMm6J8kr0Wom80p1xLCXcy8SUhavdK4lSO4Ex1-gbcSFcCPfqcjuNP-ZoptLZUkrnNo_j3qKU5uj4aioHRf5wGwi7rcp2Xcac2ykjMSIrdBLxOlcN2rStW0zJFo/s1600/ESMARAGDO%20CAMAZ%20CUAQDRADO.jpg" alt="Esmaragdo Camaz" class="w-full h-full object-cover object-center" onerror="this.src='https://placehold.co/400x400/0d111a/d4af37?text=Esmaragdo+Camaz'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-mystic-950 via-transparent to-transparent opacity-60"></div>
-                        <div class="absolute bottom-3 left-3 right-3 text-center">
-                            <span class="text-[10px] tracking-widest text-mystic-gold font-mono uppercase bg-mystic-950/90 px-2.5 py-1 rounded border border-mystic-gold/30">Investigador & Autor</span>
+                    <div class="relative w-48 h-48 sm:w-60 sm:h-60 rounded-xl overflow-hidden border-2 border-term-matrix shadow-xl shadow-term-matrix/20">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8FbLbKwFrXtjEejDKAODVrx-K5KYWOY4ItIZ_jA8he1rqxrzZ7LBjQ-JitZkoDs2bECMm6J8kr0Wom80p1xLCXcy8SUhavdK4lSO4Ex1-gbcSFcCPfqcjuNP-ZoptLZUkrnNo_j3qKU5uj4aioHRf5wGwi7rcp2Xcac2ykjMSIrdBLxOlcN2rStW0zJFo/s1600/ESMARAGDO%20CAMAZ%20CUAQDRADO.jpg" alt="Esmaragdo Camaz" class="w-full h-full object-cover object-center grayscale contrast-125" onerror="this.src='https://placehold.co/400x400/030303/00ff66?text=Esmaragdo+Camaz'">
+                        <div class="absolute inset-0 bg-term-matrix/15 mix-blend-overlay"></div>
+                        <div class="absolute bottom-2 left-2 right-2 text-center font-mono">
+                            <span class="text-[9px] text-term-matrix bg-term-950 px-2 py-0.5 rounded border border-term-matrix/40 uppercase">Analista & Investigador</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="lg:col-span-8 space-y-5 text-center lg:text-left">
-                    <div class="inline-flex items-center space-x-2 bg-mystic-900 border border-mystic-gold/30 px-3.5 py-1.5 rounded-full text-xs text-mystic-gold font-mono">
+                <div class="lg:col-span-8 space-y-4 text-center lg:text-left font-sans">
+                    <div class="inline-flex items-center space-x-2 bg-term-950 border border-term-matrix/40 px-3 py-1 rounded text-xs text-term-matrix font-mono">
                         <i class="fa-solid fa-user-shield"></i>
-                        <span>PASO 3: AUTORIDAD Y RIGOR INVESTIGATIVO</span>
+                        <span>FASE 03 // AUTORIDAD Y RIGOR INVESTIGATIVO</span>
                     </div>
 
-                    <h2 class="font-cinzel text-2xl sm:text-3xl font-bold">Conoce al Autor: Esmaragdo Camaz</h2>
+                    <h2 class="font-mono text-2xl sm:text-3xl font-bold text-white">Esmaragdo Camaz</h2>
 
-                    <p class="text-slate-300 text-base leading-relaxed">
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
                         El periodista, escritor y analista, <strong class="text-white font-semibold">Esmaragdo Camaz</strong>, ha estudiado los documentos desclasificados de la CIA que revelan cómo sus videntes alcanzaban altos grados de conciencia para la visión remota, telepatía y otras habilidades que hoy en día se aplican en la vida diaria para un mejor estado de vida, desarrollo y salud.
                     </p>
 
-                    <p class="text-slate-300 text-base leading-relaxed">
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
                         No es sólo una meditación, esto va más allá, es la clave de cómo elevar la conciencia a un grado en que el ser humano puede aprovechar todas sus capacidades cerebrales si es constante en la aplicación de estas disciplinas.
                     </p>
                 </div>
@@ -249,207 +250,209 @@
         </div>
     </section>
 
-    <section id="videos" class="py-24 bg-mystic-900/40 border-y border-mystic-gold/15 relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-            <div class="text-center space-y-3">
-                <span class="text-xs tracking-widest text-mystic-gold uppercase font-mono">PASO 4: EVIDENCIA EN VIDEO & CREDIBILIDAD</span>
-                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold">Escucha el Análisis Oficial de Esmaragdo Camaz</h2>
-                <p class="text-slate-300 max-w-2xl mx-auto text-sm">
-                    Reproduce el análisis de investigación militar directamente aquí.
-                </p>
+    <!-- FASE 04: BITÁCORA DE VIDEO OFICIAL -->
+    <section id="fase4" class="py-24 bg-term-900/50 border-y border-term-matrix/25 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 text-center">
+            
+            <div class="space-y-3 font-mono">
+                <span class="text-xs tracking-widest text-term-matrix uppercase">FASE 04 // BITÁCORA DE VIDEO OFICIAL</span>
+                <h2 class="font-mono text-2xl sm:text-3xl font-bold text-white">Análisis Táctico en Video por Esmaragdo Camaz</h2>
+                <p class="text-slate-300 text-sm font-sans">Reproduce la investigación militar directamente en el visor integrado.</p>
             </div>
 
-            <!-- YouTube Video Wrapper (Optimized for vertical/horizontal display) -->
-            <div class="bg-mystic-800/60 border border-mystic-gold/40 rounded-3xl p-6 sm:p-8 max-w-3xl mx-auto box-glow space-y-6 text-center">
-                <div class="space-y-1">
-                    <span class="text-xs text-mystic-gold font-mono uppercase tracking-widest"><i class="fa-brands fa-youtube mr-1 text-red-500"></i> Video de Análisis Desclasificado</span>
-                    <h3 class="font-cinzel font-bold text-xl text-white">Los Secretos del Proyecto Gateway al Descubierto</h3>
+            <div class="term-border bg-term-950 rounded-2xl p-4 sm:p-6 max-w-sm mx-auto space-y-4 shadow-2xl">
+                <div class="flex justify-between items-center font-mono text-xs text-slate-400 border-b border-slate-800 pb-2">
+                    <span>FEED #YT-01: PROYECTO GATEWAY</span>
+                    <span class="text-term-matrix animate-pulse">● TRANSMISIÓN ACTIVA</span>
                 </div>
                 
-                <div class="vertical-video-wrapper rounded-2xl overflow-hidden border border-mystic-gold/40 shadow-2xl">
-                    <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/tuUY-1XbdkE" title="Análisis Oficial - Esmaragdo Camaz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <!-- Responsive YouTube Vertical Embed Wrapper -->
+                <div class="relative w-full overflow-hidden rounded-lg border border-term-matrix/40 bg-black shadow-2xl aspect-[9/16] max-h-[580px] mx-auto">
+                    <iframe class="w-full h-full absolute inset-0" src="https://www.youtube-nocookie.com/embed/tuUY-1XbdkE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <section id="beneficios" class="py-24 relative">
+    <!-- FASE 05: BENEFICIOS Y PROTOCOLOS -->
+    <section id="fase5" class="py-24 relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-            <div class="text-center space-y-3">
-                <span class="text-xs tracking-widest text-mystic-gold uppercase font-mono">PASO 5: BONDADES Y CONTENIDO DE LA GUÍA</span>
-                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold">¿Qué incluye exactamente este White Paper?</h2>
-                <p class="text-slate-300 max-w-2xl mx-auto text-sm">
-                    Haz clic en cada beneficio para explorar las herramientas prácticas que dominarás.
-                </p>
+            
+            <div class="text-center space-y-3 font-mono">
+                <span class="text-xs tracking-widest text-term-matrix uppercase">FASE 05 // MÓDULOS Y BONDADES TÁCTICAS</span>
+                <h2 class="font-mono text-2xl sm:text-4xl font-bold text-white">¿Qué contiene este White Paper?</h2>
+                <p class="text-slate-300 text-sm font-sans">Haz clic en cada componente operativo para inspeccionar las herramientas.</p>
             </div>
 
-            <!-- Interactive Benefits Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Benefit 1 -->
-                <div onclick="selectBenefit(1)" id="ben-card-1" class="bg-mystic-800/60 border-2 border-mystic-gold/30 hover:border-mystic-gold p-6 rounded-2xl cursor-pointer transition-all duration-300 space-y-3">
-                    <div class="w-12 h-12 rounded-xl bg-mystic-900 border border-mystic-gold/40 flex items-center justify-center text-mystic-gold text-lg">
-                        <i class="fa-solid fa-shoe-prints"></i>
+            <!-- Interactive Modules Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono">
+                <div onclick="selectModule(1)" id="mod-card-1" class="term-border-glow bg-term-900/90 p-6 rounded-xl cursor-pointer transition space-y-3">
+                    <div class="w-10 h-10 rounded bg-term-950 border border-term-matrix flex items-center justify-center text-term-matrix">
+                        <i class="fa-solid fa-list-check"></i>
                     </div>
-                    <h3 class="font-cinzel font-bold text-white text-lg">Los 6 Pasos Gateway</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">Desde la Energy Conversion Box hasta la emisión de intención consciente.</p>
+                    <h3 class="font-bold text-white text-base font-sans">1. Los 6 Pasos Gateway</h3>
+                    <p class="text-slate-400 text-xs font-sans">Desde la Energy Conversion Box hasta la emisión consciente.</p>
                 </div>
 
-                <!-- Benefit 2 -->
-                <div onclick="selectBenefit(2)" id="ben-card-2" class="bg-mystic-800/60 border-2 border-slate-800 hover:border-mystic-gold p-6 rounded-2xl cursor-pointer transition-all duration-300 space-y-3">
-                    <div class="w-12 h-12 rounded-xl bg-mystic-900 border border-mystic-gold/40 flex items-center justify-center text-mystic-gold text-lg">
+                <div onclick="selectModule(2)" id="mod-card-2" class="term-border bg-term-900/60 hover:border-term-matrix p-6 rounded-xl cursor-pointer transition space-y-3">
+                    <div class="w-10 h-10 rounded bg-term-950 border border-term-matrix/40 flex items-center justify-center text-term-matrix">
                         <i class="fa-solid fa-brain"></i>
                     </div>
-                    <h3 class="font-cinzel font-bold text-white text-lg">Estado Focus 10</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">Alcanza la condición de cuerpo dormido y mente despierta para control emocional.</p>
+                    <h3 class="font-bold text-white text-base font-sans">2. Estado Focus 10</h3>
+                    <p class="text-slate-400 text-xs font-sans">Cuerpo dormido y mente despierta para control absoluto.</p>
                 </div>
 
-                <!-- Benefit 3 -->
-                <div onclick="selectBenefit(3)" id="ben-card-3" class="bg-mystic-800/60 border-2 border-slate-800 hover:border-mystic-gold p-6 rounded-2xl cursor-pointer transition-all duration-300 space-y-3">
-                    <div class="w-12 h-12 rounded-xl bg-mystic-900 border border-mystic-gold/40 flex items-center justify-center text-mystic-gold text-lg">
+                <div onclick="selectModule(3)" id="mod-card-3" class="term-border bg-term-900/60 hover:border-term-matrix p-6 rounded-xl cursor-pointer transition space-y-3">
+                    <div class="w-10 h-10 rounded bg-term-950 border border-term-matrix/40 flex items-center justify-center text-term-matrix">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
-                    <h3 class="font-cinzel font-bold text-white text-lg">REBAL & Visión Remota</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">Crea tu campo protector y entrena tu intuición con metodología Stargate.</p>
+                    <h3 class="font-bold text-white text-base font-sans">3. REBAL & Stargate</h3>
+                    <p class="text-slate-400 text-xs font-sans">Genera tu campo protector y entrena visión remota.</p>
                 </div>
             </div>
 
-            <!-- Dynamic Detail Box -->
-            <div id="ben-display" class="bg-mystic-800/90 border border-mystic-gold/50 rounded-2xl p-6 sm:p-8 max-w-3xl mx-auto text-center space-y-3 box-glow">
-                <span class="text-xs font-mono text-mystic-gold uppercase" id="ben-sub">SELECCIONA UN BENEFICIO ARRIBA</span>
-                <h4 class="font-cinzel font-bold text-white text-xl" id="ben-title">Explora los módulos tácticos</h4>
-                <p class="text-slate-300 text-sm" id="ben-desc">Haz clic en cualquiera de las 3 tarjetas superiores para desplegar información detallada sobre la metodología militar aplicada.</p>
+            <!-- Dynamic Module Inspector Display -->
+            <div id="mod-display" class="term-border bg-term-900/95 rounded-xl p-6 sm:p-8 max-w-3xl mx-auto text-center space-y-3 font-mono shadow-2xl">
+                <span class="text-xs text-term-matrix uppercase" id="mod-sub">INSPECTOR DE MÓDULO ACTIVADO</span>
+                <h4 class="font-bold text-white text-lg font-sans" id="mod-title">Protocolo Operativo #1: Los 6 Pasos Fundamentales</h4>
+                <p class="text-slate-300 text-xs sm:text-sm font-sans" id="mod-desc">Aprende el protocolo exacto paso a paso: desde el aislamiento sensorial y el uso de la Energy Conversion Box, hasta la sintonización vibracional consciente.</p>
             </div>
+
         </div>
     </section>
 
-    <section id="oferta" class="py-24 bg-mystic-900/75 border-y border-mystic-gold/20 relative">
+    <!-- FASE 06: OFERTA Y SUMINISTRO -->
+    <section id="fase6" class="py-24 bg-term-900/60 border-y border-term-matrix/25 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-            <div class="inline-flex items-center space-x-2 bg-mystic-800 border border-mystic-gold/40 px-4 py-2 rounded-full text-xs text-mystic-gold font-mono">
-                <i class="fa-solid fa-tags"></i>
-                <span>PASO 6: OFERTA DE LANZAMIENTO ESPECIAL</span>
+            
+            <div class="inline-flex items-center space-x-2 bg-term-950 border border-term-matrix/40 px-4 py-1.5 rounded text-xs text-term-matrix font-mono">
+                <i class="fa-solid fa-tag text-term-amber"></i>
+                <span>FASE 06 // SUMINISTRO Y VALOR DE LANZAMIENTO</span>
             </div>
 
-            <h2 class="font-cinzel text-3xl sm:text-5xl font-bold">
-                Todo este conocimiento destilado a un precio <span class="text-mystic-gold glow-gold">Irrepetible</span>
+            <h2 class="font-mono text-3xl sm:text-5xl font-bold text-white">
+                Conocimiento Militar Destilado a un Precio <span class="text-term-matrix matrix-glow">Irrepetible</span>
             </h2>
 
-            <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto">
-                ¿Por qué pasar meses traduciendo y analizando documentos densos cuando puedes tener la síntesis perfecta en tus manos hoy mismo?
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-sans">
+                ¿Por qué pasar meses traduciendo y analizando documentos densos cuando puedes tener la síntesis perfecta optimizada para celular?
             </p>
 
-            <div class="bg-mystic-800/90 border-2 border-mystic-gold/60 rounded-3xl p-8 sm:p-10 max-w-xl mx-auto box-glow space-y-6 relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-mystic-gold text-black font-cinzel font-bold text-xs px-4 py-1.5 rounded-bl-xl classified-stamp">
-                    AHORRAS 50%
+            <div class="term-border bg-term-950 rounded-2xl p-8 sm:p-10 max-w-xl mx-auto space-y-6 relative overflow-hidden font-mono shadow-2xl">
+                <div class="absolute top-0 right-0 bg-term-matrix text-black font-bold text-[10px] px-3 py-1 shadow">
+                    AHORRO 50%
                 </div>
 
-                <div class="space-y-2">
-                    <span class="text-xs text-slate-400 uppercase tracking-widest font-mono">WHITE PAPER OFICIAL (PDF • 918 KB)</span>
-                    <h3 class="font-cinzel font-bold text-white text-2xl">Cómo Elevar La Conciencia</h3>
+                <div class="space-y-1">
+                    <span class="text-[11px] text-slate-400 uppercase">WHITE PAPER OFICIAL (PDF • 918 KB)</span>
+                    <h3 class="font-bold text-white text-xl font-sans">Cómo Elevar La Conciencia</h3>
                 </div>
 
                 <div class="flex items-center justify-center space-x-4 py-2">
-                    <span class="text-slate-500 line-through text-xl">$15.00 USD</span>
-                    <span class="text-4xl sm:text-5xl font-cinzel font-bold text-mystic-gold">$7.99 <span class="text-sm font-sans text-slate-400">USD</span></span>
+                    <span class="text-slate-500 line-through text-lg">~$15.00 USD</span>
+                    <span class="text-4xl font-bold text-term-matrix">$7.99 <span class="text-xs text-slate-400 font-sans">USD</span></span>
                 </div>
 
-                <div class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
-                    <div class="flex items-center justify-center space-x-2"><i class="fa-solid fa-check text-mystic-gold"></i><span>Acceso inmediato en PDF optimizado para celular</span></div>
-                    <div class="flex items-center justify-center space-x-2"><i class="fa-solid fa-check text-mystic-gold"></i><span>Lectura ágil de 7 páginas directo al grano</span></div>
+                <div class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800 font-sans">
+                    <div class="flex items-center justify-center space-x-2"><i class="fa-solid fa-check text-term-matrix"></i><span>Acceso inmediato en PDF optimizado para celular</span></div>
+                    <div class="flex items-center justify-center space-x-2"><i class="fa-solid fa-check text-term-matrix"></i><span>Lectura ágil de 7 páginas directo al grano</span></div>
                 </div>
 
                 <div class="pt-4">
-                    <a href="#tesoro" class="w-full bg-gradient-to-r from-mystic-gold via-yellow-500 to-yellow-600 text-black font-bold py-4 rounded-xl text-base font-cinzel hover:brightness-110 shadow-xl shadow-mystic-gold/25 transition block">
-                        IR AL TESORO DIGITAL
+                    <a href="#fase7" class="w-full bg-term-matrix text-black font-extrabold py-3.5 rounded text-sm hover:bg-emerald-400 transition block shadow-lg shadow-term-matrix/30">
+                        RECLAMAR SUMINISTRO DIGITAL
                     </a>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <section id="tesoro" class="py-28 relative overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-mystic-gold/15 rounded-full blur-3xl pointer-events-none animate-glow"></div>
-
+    <!-- FASE 07: EL TESORO // EL CHECKOUT FINAL -->
+    <section id="fase7" class="py-28 relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
-            <div class="text-center space-y-4">
-                <span class="text-xs tracking-widest text-mystic-gold uppercase font-mono">PASO 7: LA VICTORIA // EL TESORO DIGITAL</span>
-                <h2 class="font-cinzel text-4xl sm:text-6xl font-black text-white">Tu Llave Hacia la Expansión Absoluta</h2>
-                <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto">
-                    Has llegado al final del expediente. Desbloquea el PDF oficial ahora mismo mediante PayPal y comienza tu transformación hoy.
+            
+            <div class="text-center space-y-4 font-mono">
+                <span class="text-xs tracking-widest text-term-matrix uppercase">FASE 07 // LA VICTORIA // EL TESORO DIGITAL</span>
+                <h2 class="font-mono text-3xl sm:text-5xl font-black text-white">Tu Llave Hacia la Expansión Absoluta</h2>
+                <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-sans">
+                    Has completado la secuencia táctica. Obtén tu copia inmediata procesada de forma segura mediante PayPal.
                 </p>
             </div>
 
-            <div class="bg-mystic-800/90 border-2 border-mystic-gold rounded-3xl p-8 sm:p-12 box-glow shadow-2xl relative">
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-mystic-gold text-black font-cinzel font-bold text-xs px-6 py-2 rounded-full uppercase tracking-widest shadow-lg">
-                    <i class="fa-solid fa-lock mr-1.5"></i> Descarga Segura Inmediata
+            <div class="term-border-glow bg-term-900/90 rounded-2xl p-8 sm:p-12 shadow-2xl relative">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-term-950 border border-term-matrix text-term-matrix font-mono text-xs px-6 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
+                    <i class="fa-solid fa-lock mr-1.5 text-term-amber"></i> Descarga Segura Inmediata
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-4">
-                    <div class="space-y-4 text-left">
-                        <div class="w-20 h-20 rounded-2xl bg-mystic-900 border border-mystic-gold/50 flex items-center justify-center mx-auto md:mx-0">
-                            <i class="fa-solid fa-file-pdf text-mystic-gold text-3xl"></i>
+                    <div class="space-y-4 text-left font-sans">
+                        <div class="w-16 h-16 rounded bg-term-950 border border-term-matrix flex items-center justify-center mx-auto md:mx-0 shadow-lg shadow-term-matrix/20">
+                            <i class="fa-solid fa-file-pdf text-term-matrix text-2xl"></i>
                         </div>
-                        <h3 class="font-cinzel font-bold text-2xl text-white text-center md:text-left">White Paper Oficial</h3>
-                        <ul class="text-xs text-slate-300 space-y-2">
-                            <li><i class="fa-solid fa-check text-mystic-gold mr-2"></i> Formato PDF de alta resolución (918 KB)</li>
-                            <li><i class="fa-solid fa-check text-mystic-gold mr-2"></i> Compatible con cualquier smartphone o tablet</li>
-                            <li><i class="fa-solid fa-check text-mystic-gold mr-2"></i> Envío automático instantáneo tras el pago</li>
+                        <h3 class="font-mono font-bold text-xl text-white text-center md:text-left">White Paper Oficial</h3>
+                        <ul class="text-xs text-slate-300 space-y-2 font-mono">
+                            <li><i class="fa-solid fa-check text-term-matrix mr-2"></i> PDF Alta Resolución (918 KB)</li>
+                            <li><i class="fa-solid fa-check text-term-matrix mr-2"></i> Compatible Smartphone / Tablet / PC</li>
+                            <li><i class="fa-solid fa-check text-term-matrix mr-2"></i> Enlace automático inmediato tras el pago</li>
                         </ul>
                     </div>
 
-                    <div class="bg-mystic-900/90 border border-slate-800 p-6 rounded-2xl text-center space-y-6">
+                    <div class="term-border bg-term-950 p-6 rounded-xl text-center space-y-6 font-mono shadow-xl">
                         <div>
-                            <span class="text-xs text-slate-400 block font-mono">Inversión única</span>
-                            <span class="text-4xl font-cinzel font-bold text-mystic-gold">$7.99 <span class="text-sm font-sans text-slate-400">USD</span></span>
+                            <span class="text-xs text-slate-400 block">Inversión Única</span>
+                            <span class="text-3xl font-bold text-term-matrix">$7.99 <span class="text-xs text-slate-400 font-sans">USD</span></span>
                         </div>
 
-                        <!-- PAYPAL BUTTON INTEGRATION -->
+                        <!-- PAYPAL CHECKOUT BUTTON -->
                         <div class="space-y-3">
-                            <a href="https://www.paypal.com/ncp/payment/TU_BOTON_PAYPAL_AQUÍ" target="_blank" class="w-full bg-[#0070ba] hover:bg-[#005ea6] text-white font-bold py-4 rounded-xl text-base font-cinzel shadow-xl transition flex items-center justify-center space-x-3 cursor-pointer">
-                                <i class="fa-brands fa-paypal text-xl"></i>
+                            <a href="https://www.paypal.com/ncp/payment/TU_BOTON_PAYPAL_AQUÍ" target="_blank" class="w-full bg-[#0070ba] hover:bg-[#005ea6] text-white font-bold py-3.5 rounded text-sm transition flex items-center justify-center space-x-2 cursor-pointer shadow-lg">
+                                <i class="fa-brands fa-paypal text-lg"></i>
                                 <span>Pagar con PayPal ($7.99 USD)</span>
                             </a>
-                            <p class="text-[11px] text-slate-400">Procesamiento 100% seguro y cifrado por PayPal.</p>
+                            <p class="text-[10px] text-slate-400 font-sans">Procesamiento 100% cifrado y seguro por PayPal.</p>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <footer class="bg-mystic-950 border-t border-slate-800 py-12 text-center text-xs text-slate-500 space-y-4">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-            <span class="font-cinzel font-bold tracking-widest text-slate-300 block">CÓMO ELEVAR LA CONCIENCIA</span>
-            <p class="text-slate-600">© 2026 Esmaragdocamaz. Todos los derechos reservados.</p>
+    <!-- Footer -->
+    <footer class="bg-term-950 border-t border-term-matrix/30 py-10 text-center text-xs text-slate-500 font-mono space-y-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
+            <span class="text-term-matrix font-bold tracking-widest block">TERMINAL ESMARAGDOCAMAZ // SCHEMATIC ARCHIVE</span>
+            <p class="text-slate-600 font-sans text-xs">© 2026 Esmaragdocamaz. Todos los derechos reservados.</p>
         </div>
     </footer>
 
+    <!-- Interactive JS Scripts -->
     <script>
-        // Interactive Frequency Tuner
-        function updateFrequency(val) {
-            document.getElementById('freq-val').innerText = val + ' Hz';
-            const status = document.getElementById('freq-status');
-            const desc = document.getElementById('freq-desc');
+        // Interactive Telemetry Frequency Tuner
+        function updateTelemetry(val) {
+            document.getElementById('tele-val').innerText = val + ' Hz';
+            const status = document.getElementById('tele-status');
+            const desc = document.getElementById('tele-desc');
             
             if(val < 7) {
-                status.innerText = "Estado: Theta Profundo (Meditación)";
-                status.className = "bg-cyan-500/20 px-2.5 py-1 rounded text-cyan-300";
-                desc.innerHTML = `<strong class="text-cyan-400 block mb-1 font-cinzel">Frecuencia Theta (${val} Hz)</strong>Acceso directo al subconsciente profundo, creatividad expandida y sanación bio-energética.`;
+                status.innerText = "Estado: Theta Profundo ("+val+" Hz)";
+                desc.innerHTML = `<strong class="text-term-matrix block mb-1 font-mono">Frecuencia Theta (${val} Hz)</strong>Acceso directo al subconsciente profundo, creatividad expandida y sanación bio-energética.`;
             } else if(val >= 7 && val <= 8.5) {
-                status.innerText = "Estado: Resonancia Schumann (Equilibrio)";
-                status.className = "bg-mystic-gold/20 px-2.5 py-1 rounded text-yellow-200";
-                desc.innerHTML = `<strong class="text-mystic-gold block mb-1 font-cinzel">Frecuencia de Resonancia Schumann (${val} Hz)</strong>El punto de sintonía exacta entre el campo electromagnético de la Tierra y las ondas cerebrales Alpha profundas. Ideal para activar la intuición.`;
+                status.innerText = "Estado: Resonancia Schumann ("+val+" Hz)";
+                desc.innerHTML = `<strong class="text-term-matrix block mb-1 font-mono">Frecuencia de Resonancia Schumann (${val} Hz)</strong>Punto de sintonía entre el campo electromagnético terrestre y las ondas cerebrales Alpha profundas. Activa la intuición y calma el ruido mental.`;
             } else {
-                status.innerText = "Estado: Alpha Elevado (Hiper-Enfoque)";
-                status.className = "bg-yellow-500/20 px-2.5 py-1 rounded text-yellow-400";
-                desc.innerHTML = `<strong class="text-yellow-400 block mb-1 font-cinzel">Frecuencia Alpha Superior (${val} Hz)</strong>Máxima claridad mental, concentración impecable y sincronización hemisférica total.`;
+                status.innerText = "Estado: Alpha Elevado ("+val+" Hz)";
+                desc.innerHTML = `<strong class="text-term-matrix block mb-1 font-mono">Frecuencia Alpha Superior (${val} Hz)</strong>Máxima claridad mental, concentración impecable y sincronización hemisférica total.`;
             }
         }
 
-        // Interactive Dossier Accordions
+        // Dossier Toggles
         function toggleDossier(num) {
             for(let i=1; i<=4; i++) {
-                const content = document.getElementById('dos-content-' + i);
-                const icon = document.getElementById('icon-' + i);
+                const content = document.getElementById('dossier-content-' + i);
+                const icon = document.getElementById('dossier-icon-' + i);
                 if(i === num) {
                     if(content.classList.contains('hidden')) {
                         content.classList.remove('hidden');
@@ -465,30 +468,30 @@
             }
         }
 
-        // Interactive Benefit Inspector
-        function selectBenefit(num) {
+        // Module Inspector
+        function selectModule(num) {
             for(let i=1; i<=3; i++) {
-                const card = document.getElementById('ben-card-' + i);
+                const card = document.getElementById('mod-card-' + i);
                 if(i === num) {
-                    card.className = "bg-mystic-800/90 border-2 border-mystic-gold p-6 rounded-2xl cursor-pointer transition-all duration-300 space-y-3 box-glow";
+                    card.className = "term-border-glow bg-term-900/90 p-6 rounded-xl cursor-pointer transition space-y-3";
                 } else {
-                    card.className = "bg-mystic-800/60 border-2 border-slate-800 hover:border-mystic-gold p-6 rounded-2xl cursor-pointer transition-all duration-300 space-y-3";
+                    card.className = "term-border bg-term-900/60 hover:border-term-matrix p-6 rounded-xl cursor-pointer transition space-y-3";
                 }
             }
-            const sub = document.getElementById('ben-sub');
-            const title = document.getElementById('ben-title');
-            const desc = document.getElementById('ben-desc');
+            const sub = document.getElementById('mod-sub');
+            const title = document.getElementById('mod-title');
+            const desc = document.getElementById('mod-desc');
 
             if(num === 1) {
-                sub.innerText = "MÓDULO TÁCTICO 01";
+                sub.innerText = "PROTOCOLO OPERATIVO #1";
                 title.innerText = "Los 6 Pasos Fundamentales del Proceso Gateway";
                 desc.innerText = "Aprende el protocolo exacto paso a paso: desde el aislamiento sensorial y el uso de la Energy Conversion Box, hasta la sintonización vibracional consciente.";
             } else if(num === 2) {
-                sub.innerText = "MÓDULO TÁCTICO 02";
+                sub.innerText = "PROTOCOLO OPERATIVO #2";
                 title.innerText = "El Estado Focus 10 (Cuerpo Dormido / Mente Despierta)";
                 desc.innerText = "La técnica militar probada para relajar el cuerpo físico por completo mientras mantienes un estado de agudeza mental superior y control emocional absoluto.";
             } else if(num === 3) {
-                sub.innerText = "MÓDULO TÁCTICO 03";
+                sub.innerText = "PROTOCOLO OPERATIVO #3";
                 title.innerText = "REBAL y Visión Remota Básica";
                 desc.innerText = "Genera tu Globo de Energía Resonante para protegerte de interferencias externas y entrena tu percepción no local con los ejercicios clásicos de Stargate.";
             }
