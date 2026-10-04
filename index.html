@@ -528,7 +528,7 @@
         // SECURE VAULT ACCESS CONTROL & VERIFICATION
         function checkPaymentVerification() {
             const urlParams = new URLSearchParams(window.location.search);
-            // Verify if user returned from PayPal with success parameter or token
+            // Verify if user returned from PayPal with success parameter, token, or active verified session
             const isVerified = urlParams.get('success') === 'true' || 
                                urlParams.get('checkout') === 'success' || 
                                urlParams.get('status') === 'completed' ||
@@ -546,7 +546,7 @@
             modal.classList.remove('hidden');
 
             if (checkPaymentVerification()) {
-                // Verified successfully (returned from PayPal or stored session)
+                // Verified successfully (returned from PayPal or active paid session)
                 sessionStorage.setItem('payment_verified', 'true');
                 badge.innerText = "BÓVEDA DE DESCARGA // PAGO VERIFICADO";
                 badge.className = "text-xs text-term-matrix block font-bold";
@@ -581,7 +581,7 @@
                             <i class="fa-solid fa-triangle-exclamation text-base"></i>
                             <span>No se detectó registro de pago activo</span>
                         </div>
-                        <p class="text-slate-300">Para proteger los derechos de autor y evitar accesos no autorizados, la descarga requiere haber completado la aportación de $7.99 USD a través de PayPal.</p>
+                        <p class="text-slate-300">Para proteger los derechos de autor y evitar descargas no autorizadas, el sistema requiere haber completado la aportación de $7.99 USD a través de PayPal.</p>
                         <p class="text-slate-400 text-[11px]">Si ya realizaste tu pago y fuiste redirigido, asegúrate de haber vuelto desde el enlace oficial de PayPal.</p>
                     </div>
                 `;
@@ -589,7 +589,7 @@
                 actions.innerHTML = `
                     <a href="https://www.paypal.com/ncp/payment/NDREC2PBEVJKY" target="_blank" class="w-full bg-[#0070ba] hover:bg-[#005ea6] text-white font-bold py-3.5 rounded text-sm transition flex items-center justify-center space-x-2 shadow-lg">
                         <i class="fa-brands fa-paypal text-lg"></i>
-                        <span>COMPRAR ACCESO AHORA ($7.99)</span>
+                        <span>PAGAR CON PAYPAL ($7.99 USD)</span>
                     </a>
                     <button onclick="closeSecureVault()" class="w-full bg-transparent border border-slate-700 text-slate-400 hover:text-white py-2 rounded text-xs transition">
                         Cerrar Bóveda
