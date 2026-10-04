@@ -76,7 +76,7 @@
     <header class="fixed top-0 left-0 right-0 z-40 bg-term-950/95 backdrop-blur-md border-b border-term-matrix/30 font-mono text-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 rounded border border-term-matrix flex items-center justify-center bg-term-900 shadow-lg shadow-term-matrix/20">
+                <div class="w-8 h-8 rounded border border-term-matrix flex items-center justify-center bg-term-900 shadow-lg shadow-term-matrix/25">
                     <i class="fa-solid fa-terminal text-term-matrix animate-pulse"></i>
                 </div>
                 <div>
@@ -412,12 +412,12 @@
                                 <span>Pagar con PayPal ($7.99 USD)</span>
                             </a>
                             
-                            <!-- Secure Vault Trigger Button (Simulates Post-Purchase / Return modal) -->
+                            <!-- Secure Vault Trigger Button (Only for users returning from PayPal or support) -->
                             <button onclick="openSecureVault()" class="w-full bg-term-900 border border-term-matrix text-term-matrix hover:bg-term-matrix hover:text-black font-bold py-2.5 rounded text-xs transition flex items-center justify-center space-x-2">
                                 <i class="fa-solid fa-key"></i>
                                 <span>¿Ya pagaste? Entrar a Bóveda</span>
                             </button>
-                            
+
                             <p class="text-[10px] text-slate-400 font-sans">Procesamiento 100% cifrado por PayPal.</p>
                         </div>
                     </div>
@@ -427,7 +427,7 @@
         </div>
     </section>
 
-    <div id="vault-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div id="vault-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex items-center justify-center p-4">
         <div class="term-border bg-term-950 rounded-2xl max-w-lg w-full p-6 sm:p-8 space-y-6 relative font-mono shadow-2xl">
             <button onclick="closeSecureVault()" class="absolute top-4 right-4 text-slate-400 hover:text-term-matrix text-lg">
                 <i class="fa-solid fa-xmark"></i>
@@ -438,27 +438,17 @@
                     <i class="fa-solid fa-shield-halved text-lg"></i>
                 </div>
                 <div>
-                    <span class="text-xs text-term-matrix block">BÓVEDA DE DESCARGA // VERIFICADA</span>
+                    <span class="text-xs text-term-matrix block" id="vault-status-badge">BÓVEDA DE DESCARGA // VERIFICANDO PAGO</span>
                     <h3 class="font-bold text-white text-base font-sans">Cómo Elevar La Conciencia (PDF)</h3>
                 </div>
             </div>
 
-            <div class="space-y-4 text-xs text-slate-300 font-sans leading-relaxed">
-                <p>¡Gracias por tu compra! Tu pago ha sido verificado con éxito. Para proteger el documento contra distribución no autorizada y asegurar que la descarga se efectúe limpiamente en tu dispositivo, haz clic en el botón de abajo:</p>
-                <div class="bg-term-900 p-3 rounded border border-slate-800 text-[11px] text-slate-400 flex items-center space-x-2">
-                    <i class="fa-solid fa-circle-check text-term-matrix"></i>
-                    <span>Conexión segura SSL con comoelevarlaconciencia.com</span>
-                </div>
+            <div class="space-y-4 text-xs text-slate-300 font-sans leading-relaxed" id="vault-content-area">
+                <!-- Dynamically updated based on payment token verification -->
             </div>
 
-            <div class="space-y-3 pt-2">
-                <button onclick="triggerSecureDownload()" class="w-full bg-term-matrix text-black font-extrabold py-3 rounded text-sm hover:bg-emerald-400 transition shadow-lg shadow-term-matrix/30 flex items-center justify-center space-x-2">
-                    <i class="fa-solid fa-download"></i>
-                    <span>DESCARGAR PDF AHORA</span>
-                </button>
-                <button onclick="closeSecureVault()" class="w-full bg-transparent border border-slate-700 text-slate-400 hover:text-white py-2 rounded text-xs transition">
-                    Cerrar Bóveda
-                </button>
+            <div class="space-y-3 pt-2" id="vault-action-area">
+                <!-- Dynamically populated buttons -->
             </div>
         </div>
     </div>
@@ -535,20 +525,98 @@
             }
         }
 
+        // SECURE VAULT ACCESS CONTROL & VERIFICATION
+        function checkPaymentVerification() {
+            const urlParams = new URLSearchParams(window.location.search);
+            // Verify if user returned from PayPal with success parameter or token
+            const isVerified = urlParams.get('success') === 'true' || 
+                               urlParams.get('checkout') === 'success' || 
+                               urlParams.get('status') === 'completed' ||
+                               urlParams.has('token') ||
+                               sessionStorage.getItem('payment_verified') === 'true';
+            return isVerified;
+        }
+
         function openSecureVault() {
-            document.getElementById('vault-modal').classList.remove('hidden');
+            const modal = document.getElementById('vault-modal');
+            const badge = document.getElementById('vault-status-badge');
+            const content = document.getElementById('vault-content-area');
+            const actions = document.getElementById('vault-action-area');
+
+            modal.classList.remove('hidden');
+
+            if (checkPaymentVerification()) {
+                // Verified successfully (returned from PayPal or stored session)
+                sessionStorage.setItem('payment_verified', 'true');
+                badge.innerText = "BÓVEDA DE DESCARGA // PAGO VERIFICADO";
+                badge.className = "text-xs text-term-matrix block font-bold";
+                
+                content.innerHTML = `
+                    <div class="bg-term-900 p-4 rounded border border-term-matrix/40 space-y-2">
+                        <div class="flex items-center space-x-2 text-term-matrix font-bold">
+                            <i class="fa-solid fa-circle-check text-base"></i>
+                            <span>¡Transacción autenticada correctamente!</span>
+                        </div>
+                        <p class="text-slate-300">Tu pago ha sido validado. Haz clic en el botón de abajo para iniciar la descarga encriptada de tu White Paper oficial.</p>
+                    </div>
+                `;
+
+                actions.innerHTML = `
+                    <button onclick="triggerSecureDownload()" class="w-full bg-term-matrix text-black font-extrabold py-3.5 rounded text-sm hover:bg-emerald-400 transition shadow-lg shadow-term-matrix/30 flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-download"></i>
+                        <span>DESCARGAR PDF AHORA</span>
+                    </button>
+                    <button onclick="closeSecureVault()" class="w-full bg-transparent border border-slate-700 text-slate-400 hover:text-white py-2 rounded text-xs transition">
+                        Cerrar Bóveda
+                    </button>
+                `;
+            } else {
+                // Not verified (user clicked "Ya pagaste" manually without coming from PayPal)
+                badge.innerText = "BÓVEDA DE DESCARGA // PAGO NO VERIFICADO";
+                badge.className = "text-xs text-term-amber block font-bold";
+
+                content.innerHTML = `
+                    <div class="bg-term-900/90 p-4 rounded border border-term-amber/40 space-y-3">
+                        <div class="flex items-center space-x-2 text-term-amber font-bold">
+                            <i class="fa-solid fa-triangle-exclamation text-base"></i>
+                            <span>No se detectó registro de pago activo</span>
+                        </div>
+                        <p class="text-slate-300">Para proteger los derechos de autor y evitar accesos no autorizados, la descarga requiere haber completado la aportación de $7.99 USD a través de PayPal.</p>
+                        <p class="text-slate-400 text-[11px]">Si ya realizaste tu pago y fuiste redirigido, asegúrate de haber vuelto desde el enlace oficial de PayPal.</p>
+                    </div>
+                `;
+
+                actions.innerHTML = `
+                    <a href="https://www.paypal.com/ncp/payment/NDREC2PBEVJKY" target="_blank" class="w-full bg-[#0070ba] hover:bg-[#005ea6] text-white font-bold py-3.5 rounded text-sm transition flex items-center justify-center space-x-2 shadow-lg">
+                        <i class="fa-brands fa-paypal text-lg"></i>
+                        <span>COMPRAR ACCESO AHORA ($7.99)</span>
+                    </a>
+                    <button onclick="closeSecureVault()" class="w-full bg-transparent border border-slate-700 text-slate-400 hover:text-white py-2 rounded text-xs transition">
+                        Cerrar Bóveda
+                    </button>
+                `;
+            }
         }
 
         function closeSecureVault() {
             document.getElementById('vault-modal').classList.add('hidden');
         }
 
-        // SECURE BLOB DOWNLOAD (Fetches PDF in background and triggers device download without exposing naked URL)
+        // SECURE DOWNLOAD TRIGGER (Only triggers if verified)
         function triggerSecureDownload() {
+            if (!checkPaymentVerification()) {
+                alert("Acceso denegado. Se requiere verificación de pago.");
+                closeSecureVault();
+                return;
+            }
+
             const pdfUrl = "https://comoelevarlaconciencia.com/como-elevar-la-conciencia.pdf";
             
             fetch(pdfUrl)
-                .then(response => response.blob())
+                .then(response => {
+                    if (!response.ok) throw new Error("Network error");
+                    return response.blob();
+                })
                 .then(blob => {
                     const blobUrl = window.URL.createObjectURL(blob);
                     const a = document.createElement('a');
@@ -573,7 +641,8 @@
         // AUTO-OPEN VAULT WHEN RETURNING FROM PAYPAL SUCCESSFUL PAYMENT
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
-            if(urlParams.get('success') === 'true' || urlParams.get('checkout') === 'success' || urlParams.get('status') === 'completed') {
+            if(urlParams.get('success') === 'true' || urlParams.get('checkout') === 'success' || urlParams.get('status') === 'completed' || urlParams.has('token')) {
+                sessionStorage.setItem('payment_verified', 'true');
                 openSecureVault();
                 window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
             }
